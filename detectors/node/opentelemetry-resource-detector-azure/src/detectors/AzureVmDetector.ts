@@ -88,16 +88,16 @@ class AzureVmResourceDetector implements DetectorSync {
     });
 
     const attributes = {
-      [AZURE_VM_SCALE_SET_NAME_ATTRIBUTE]: metadata['vmScaleSetName'],
-      [AZURE_VM_SKU_ATTRIBUTE]: metadata['sku'],
+      [AZURE_VM_SCALE_SET_NAME_ATTRIBUTE]: metadata ? metadata['vmScaleSetName'] : '',
+      [AZURE_VM_SKU_ATTRIBUTE]: metadata ? metadata['sku'] : '',
       [SemanticResourceAttributes.CLOUD_PLATFORM]: CloudPlatformValues.AZURE_VM,
       [SemanticResourceAttributes.CLOUD_PROVIDER]: CloudProviderValues.AZURE,
-      [SemanticResourceAttributes.CLOUD_REGION]: metadata['location'],
-      [CLOUD_RESOURCE_ID_RESOURCE_ATTRIBUTE]: metadata['resourceId'],
-      [SemanticResourceAttributes.HOST_ID]: metadata['vmId'],
-      [SemanticResourceAttributes.HOST_NAME]: metadata['name'],
-      [SemanticResourceAttributes.HOST_TYPE]: metadata['vmSize'],
-      [SemanticResourceAttributes.OS_VERSION]: metadata['version'],
+      [SemanticResourceAttributes.CLOUD_REGION]: metadata ? metadata['location'] : '',
+      [CLOUD_RESOURCE_ID_RESOURCE_ATTRIBUTE]: metadata ? metadata['resourceId'] : '',
+      [SemanticResourceAttributes.HOST_ID]: metadata ? metadata['vmId'] : '',
+      [SemanticResourceAttributes.HOST_NAME]: metadata ? metadata['name'] : '',
+      [SemanticResourceAttributes.HOST_TYPE]: metadata ? metadata['vmSize'] : '',
+      [SemanticResourceAttributes.OS_VERSION]: metadata ? metadata['version'] : '',
     };
     return attributes;
   }
